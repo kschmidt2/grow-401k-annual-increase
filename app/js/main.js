@@ -23,32 +23,43 @@ Highcharts.setOptions({
 document.addEventListener('DOMContentLoaded', function () {
     const myChart = Highcharts.chart('chart-container', {
         chart: {
-            type: 'bar',
+            type: 'line',
             styledMode: true,
             spacingBottom: 25,
-            spacingRight: 100
+            spacingRight: 5
         }, 
         title: {
             text: null
         },
         data: {
-            googleSpreadsheetKey: '1YOKb5l2VM4aAB2r20N_1aT_1vEajYrP3U-U3A6lZbC0'
+            googleSpreadsheetKey: '1hZV_bZZywAcK8QRM47cWiVtGTmwdkUOa9RxXQgiwdmk',
+            endColumn: 2
         },
-        // for bar charts only
         plotOptions: {
             series: {
-                groupPadding: 0.1
-            } 
+                lineWidth: 1,
+                marker: {
+                    enabled: false,
+                    symbol: 'circle',
+                    fillColor: '#ffffff',
+                    states: {
+                        hover: {
+                            fillColor: '#ffffff'
+                        }
+                    }
+                }
+            }
         },
         legend: {
             align: 'right',
             symbolRadius: 0,
-            verticalAlign: 'top',
-            x: 10,
-            itemMarginTop: -10
+            x: 30,
+            layout: 'proximate',
+            verticalAlign: 'top'
         },
         xAxis: {
             labels: {
+                useHTML: true,
                 style: {
                     whiteSpace: 'nowrap'
                 }
@@ -67,7 +78,9 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         tooltip: {
             shadow: false,
-            padding: 10
+            padding: 10,
+            valueDecimals: 0,
+            valuePrefix: '$'
         },
         responsive: {
             rules: [{
@@ -80,7 +93,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 legend: {
                     align: 'left',
-                    x: -18
+                    x: 40,
+                    layout: 'horizontal',
+                    verticalAlign: 'top',
+                    y: -182
                 },
                 tooltip: {
                     enabled: false
